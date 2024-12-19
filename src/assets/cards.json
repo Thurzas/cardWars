@@ -1,0 +1,23 @@
+[
+    {
+      "id":1,
+      "title": "Luc Skywalker",
+      "attack": 7,
+      "health": 7,
+      "cost": 5
+    },
+    {
+      "id":4,
+      "title": "Dark Vador",
+      "attack": 9,
+      "health": 10,
+      "cost": 8
+    },
+    {
+      "id":19,
+      "title": "Yoda",
+      "attack": 6,
+      "health": 6,
+      "cost": 10
+    }
+ ]
