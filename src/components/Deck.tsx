@@ -12,12 +12,19 @@ function Deck(data:DeckProps){
     })
     
     const cards = mergedData.filter(card => card !== undefined);
+    console.log(mergedData);
    return(
         <>
            <h2>Deck show off</h2>
            {cards.map(card =>(
             card !== undefined?
-                <Card props={card}/>
+                <div key={card.id}>
+                    <p>Name: {card.title}</p>
+                    <img src={card.portrait} />
+                    <p>Attack: {card.attack}</p>
+                    <p>Health: {card.health}</p>
+                    <p>Cost: {card.cost}</p>
+                </div>
                 :
                 <p>An error occured</p>
            ))}
