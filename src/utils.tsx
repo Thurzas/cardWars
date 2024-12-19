@@ -98,15 +98,21 @@ export class Hand implements Hand {
 		this.Cards = [];
 	}
 
-	public addCardItem(CardItem: CardItem) {
-		this.Cards.push(CardItem);
+	public addCardItem(card: CardItem) {
+		this.Cards.push(card);
 	}
 
-	public removeCardItem(CardItem: CardItem) {
-		const index = this.Cards.indexOf(CardItem);
+	public removeCardItem(card: CardItem) {
+		const index = this.Cards.indexOf(card);
 		if (index >= 0) {
 			this.Cards.splice(index, 1);
 		}
+	}
+
+	public drawCardItem(card: CardItem)
+	{
+		this.removeCardItem(card);
+		return card;
 	}
 }
 export interface Player {

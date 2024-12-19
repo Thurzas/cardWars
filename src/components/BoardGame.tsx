@@ -56,6 +56,13 @@ function BoardGame(data: DeckProps) {
 			}
 		};
 		initHands();
+
+        const initBoard2 = () => {
+            player2Hand.Cards.forEach((c) => {
+                player2Board.addCardItem(player2Hand.drawCardItem(c));
+            });
+        };
+        initBoard2();
 	}, [player1, player2, player1Hand]);
 
     const playCardFromHand = (card: CardItem) => {
@@ -106,14 +113,26 @@ function BoardGame(data: DeckProps) {
         }
     };
     
-
+    
 	const endTurn = () => {
 		setIsPlayer1Turn(!isPlayer1Turn);
 	};
 
-    //init du board du joueur 2 pour tests :
 
-
+    //idée de départ pour l'affichage 
+    //        Player2
+    //------------------------//
+    //                        //
+    //       Board  2         //
+    //                        //
+    //------------------------//PASSER TOUR ICI ?
+    //                        //
+    //       Board  1         //
+    //                        //
+    //------------------------//
+    //        Player1         
+    //nos cartes 
+    //affichage temporaire: normalement quand j'aurai fini avec la logique du dessus, y'a plus qu'a implementer les components ici
 	return (
 		<div>
 			<h1>Game Board</h1>
