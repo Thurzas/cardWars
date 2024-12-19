@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Hexagone extérieur -->
+  <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" 
+        fill="none" 
+        stroke="#00ff00" 
+        stroke-width="2"
+        filter="drop-shadow(0 0 2px #00ff00)"/>
+  
+  <!-- Hexagone intérieur -->
+  <path d="M50 15 L80 30 L80 70 L50 85 L20 70 L20 30 Z" 
+        fill="rgba(0,0,0,0.5)" 
+        stroke="#00ff00" 
+        stroke-width="1"/>
+  
+  <!-- Lignes décoratives -->
+  <path d="M10 25 L20 30" stroke="#00ff00" stroke-width="1"/>
+  <path d="M90 25 L80 30" stroke="#00ff00" stroke-width="1"/>
+  <path d="M10 75 L20 70" stroke="#00ff00" stroke-width="1"/>
+  <path d="M90 75 L80 70" stroke="#00ff00" stroke-width="1"/>
+  
+  <!-- Points décoratifs aux angles -->
+  <circle cx="50" cy="5" r="3" fill="#00ff00"/>
+  <circle cx="90" cy="25" r="3" fill="#00ff00"/>
+  <circle cx="90" cy="75" r="3" fill="#00ff00"/>
+  <circle cx="50" cy="95" r="3" fill="#00ff00"/>
+  <circle cx="10" cy="75" r="3" fill="#00ff00"/>
+  <circle cx="10" cy="25" r="3" fill="#00ff00"/>
+  
+  <!-- Zone de texte exemple -->
+  <text x="50" y="60" 
+        font-family="Arial, sans-serif" 
+        font-size="30" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        filter="drop-shadow(0 0 2px #00ff00)">
+    
+  </text>
+</svg>
