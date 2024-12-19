@@ -12,7 +12,6 @@ function Deck(data:DeckProps){
     })
     
     const cards = mergedData.filter(card => card !== undefined);
-    console.log(mergedData);
    return(
         <>
            <h2>Deck show off</h2>
