@@ -1,22 +1,21 @@
-import React, { Component } from "react";
-import { useReducer } from "react";
-import {Board, Player, Hand, Deck, CardItem, DeckProps, CommandManager} from "../utils.tsx";
+import React, { useState, useEffect } from "react";
+import {
+	DeckProps,
+	CardItem,
+	Board,
+	Player,
+	Deck,
+	Hand,
+	AttackCommand,
+	CommandManager,
+} from "../utils.tsx";
 
+interface GameBoardProps {
+	player1: Player;
+	player2: Player;
+}
 
-function BoardGame(data: DeckProps){
-    const deck1 = new Deck();
-    const hand1 = new Hand();
-    const player1 = new Player(0,"player1",hand1, deck1); 
-    const board1 = new Board(player1);
-
-    const deck2 = new Deck();
-    const hand2 = new Hand();
-    const player2 = new Player(1,"player2",hand2, deck2); 
-    const board2 = new Board(player2);
-
-    const attackManager = new CommandManager();
-
-    //initialisation des cartes des decks
+function BoardGame(data: DeckProps) {
 	const mergedData = data.data.map((card) => {
 		const targetedAsset = data.assets.find((asset) => asset.id === card.id);
 		if (targetedAsset)
@@ -29,68 +28,141 @@ function BoardGame(data: DeckProps){
 				targetedAsset.cost,
 			);
 	});
-
 	const cards = mergedData.filter((card) => card !== undefined);
-    deck1.Cards= cards;
+	const deck = new Deck();
+	deck.Cards = cards;
+	const [player1, setPlayer1] = useState(
+		new Player(0, "joueur1", new Hand(), deck),
+	);
+	const [player2, setPlayer2] = useState(
+		new Player(0, "joueur2", new Hand(), deck),
+	);
+	const [player1Board, setPlayer1Board] = useState(new Board(player1));
+	const [player2Board, setPlayer2Board] = useState(new Board(player2));
+	const [player1Hand, setPlayer1Hand] = useState<Hand>(player1.hand);
+	const [player2Hand, setPlayer2Hand] = useState<Hand>(player2.hand);
+	const [selectedCard, setSelectedCard] = useState<CardItem | null>(null);
+	const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
+	const commandManager = new CommandManager();
 
-    const initialState = {
-        players: [
-          player1,
-          player2,
-        ],
-        currentTurn: 0, // Indice du joueur actif
-        boards: [board1, board2],
-        attackManager
-      };
+	// Initialiser la main des joueurs avec 3 cartes du deck
+	useEffect(() => {
+		const initHands = () => {
+			for (let i = 0; i < 3; i++) {
+				const card1 = player1.deck.drawCardItem();
+				const card2 = player2.deck.drawCardItem();
+				if (card1) player1Hand.addCardItem(card1);
+				if (card2) player2.hand.addCardItem(card2); // Main du joueur 2 non affichée
+			}
+		};
+		initHands();
+	}, [player1, player2, player1Hand]);
 
-    const gameReducer = (state: typeof initialState, action: any) => {
-        switch (action.type) {
-            case 'DRAW_CARD': {                
-                //prendre premier carte du deck                
-            return { ...state };
-            }
-            case 'PLAY_CARD': {
-                //jetter la carte sur le board
-                return { ...state };
-            }
-
-            case 'ATTACK':
-            {
-                //attaque de la carte joueur courant vers cible du board adverse et check condition victoire.
-                return { ...state
-                    ,
-                 };
-            }
-            case 'END_TURN': {
-                //joueur suivant 
-
-            return { ...state};
-            }
-            default:
-            return state;
+    const playCardFromHand = (card: CardItem) => {
+        if (isPlayer1Turn) {
+            // Retirer la carte de la main du joueur 1
+            const updatedHand = new Hand();
+            player1Hand.Cards.forEach((c) => {
+                if (c.id !== card.id) {
+                    updatedHand.addCardItem(c);
+                }
+            });
+            setPlayer1Hand(updatedHand);
+    
+            // Ajouter la carte au plateau du joueur 1
+            const updatedBoard = new Board(player1Board.owner);
+            player1Board.Cards.forEach((c) => updatedBoard.addCardItem(c));
+            updatedBoard.addCardItem(card);
+            setPlayer1Board(updatedBoard);
         }
     };
-    const [state, dispatch] = useReducer(gameReducer, initialState);
+    
 
-    return(
-        <>
-            {/* board 2 */}
-			{hand1.Cards.map((card) =>
-				card !== undefined ? (
-					<div onClick={dispatch(type:"PLAY_CARD", payload: attackManager)}
-                        key={card.id}>
-						<p>Name: {card.title}</p>
-						<p>Attack: {card.attack}</p>
-						<p>Health: {card.health}</p>
-						<p>Cost: {card.cost}</p>
-					</div>
-				) : (
-					<p>An error occured</p>
-				),
-			)}
-            {/* board 1 */}
-        </>
-    );    
+    const handleCardClick = (card: CardItem, board: Board) => {
+        if (isPlayer1Turn) {
+            if (board === player1Board) {
+                // Sélectionner une carte sur le plateau du joueur 1
+                setSelectedCard(card);
+            } else if (board === player2Board && selectedCard) {
+                // Attaquer une carte du plateau du joueur 2
+                const attackCommand = new AttackCommand(
+                    selectedCard,
+                    card,
+                    player1Board,
+                    player2Board
+                );
+                commandManager.addCommand(attackCommand);
+                commandManager.executeCommands();
+    
+                // Mettre à jour les états des plateaux après l'attaque
+                setPlayer1Board(new Board(player1Board.owner));
+                player1Board.Cards.forEach((c) => player1Board.addCardItem(c));
+    
+                setPlayer2Board(new Board(player2Board.owner));
+                player2Board.Cards.forEach((c) => player2Board.addCardItem(c));
+    
+                setSelectedCard(null);
+            }
+        }
+    };
+    
+
+	const endTurn = () => {
+		setIsPlayer1Turn(!isPlayer1Turn);
+	};
+
+    //init du board du joueur 2 pour tests :
+
+
+	return (
+		<div>
+			<h1>Game Board</h1>
+
+			<div style={{ display: "flex", flexDirection:"column-reverse", justifyContent: "space-between" }}>
+				<div>
+					<h2>Player 1 Board</h2>
+					{player1Board.Cards.map((card: CardItem) => (
+						<button
+							key={card.id}
+							style={{
+								border:
+									selectedCard?.id === card.id
+										? "2px solid red"
+										: "1px solid black",
+							}}
+							onClick={() => handleCardClick(card, player1Board)}
+						>
+							{card.title} (A: {card.attack}, H: {card.health})
+						</button>
+					))}
+				</div>
+
+				<div>
+					<h2>Player 2 Board</h2>
+					{player2Board.Cards.map((card: CardItem) => (
+						<button
+							key={card.id}
+							onClick={() => handleCardClick(card, player2Board)}
+						>
+							{card.title} (A: {card.attack}, H: {card.health})
+						</button>
+					))}
+				</div>
+			</div>
+
+			<div>
+				<h2>Player 1 Hand</h2>
+				{player1Hand.Cards.map((card: CardItem) => (
+					<button key={card.id} onClick={() => playCardFromHand(card)}>
+						{card.title} (A: {card.attack}, H: {card.health})
+					</button>
+				))}
+			</div>
+
+			<button onClick={endTurn}>
+				{isPlayer1Turn ? "PASSER MON TOUR" : "Tour du joueur 2..."}
+			</button>
+		</div>
+	);
 }
-
 export default BoardGame;

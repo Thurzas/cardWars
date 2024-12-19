@@ -113,73 +113,76 @@ export interface Player {
 	id: number;
 	name: string;
 	hand: Hand;
-    deck: Deck;
+	deck: Deck;
 	turn: boolean;
 }
 
 export class Player implements Player {
-	constructor(id: number, name: string,hand:Hand, deck: Deck) {
+	constructor(id: number, name: string, hand: Hand, deck: Deck) {
 		this.id = id;
 		this.name = name;
 		this.hand = hand;
-        this.deck = deck;
-        this.turn = false;
+		this.deck = deck;
+		this.turn = false;
 		this.turn = false;
 	}
 }
 
-interface Command{
-
-    execute():void;
+interface Command {
+	execute(): void;
 }
 
 export class AttackCommand implements Command {
-    private attacker: CardItem;
-    private defender: CardItem;
-    private attackerBoard: Board;
-    private defenderBoard: Board;
-  
-    constructor(attacker: CardItem, defender: CardItem, attackerBoard: Board, defenderBoard: Board) {
-      this.attacker = attacker;
-      this.defender = defender;
-      this.attackerBoard = attackerBoard;
-      this.defenderBoard = defenderBoard;
-    }
-  
-    public execute(): void {
-      this.defender.health -= this.attacker.attack;
-      this.attacker.health -= this.defender.attack;
-  
-      if (this.defender.health <= 0) {
-        this.defenderBoard.removeCardItem(this.defender);
-        console.log(`${this.defender.title} a été détruit !`);
-      }
-  
-      if (this.attacker.health <= 0) {
-        this.attackerBoard.removeCardItem(this.attacker);
-        console.log(`${this.attacker.title} a été détruit !`);
-      }
-  
-      console.log(`${this.attacker.title} attaque ${this.defender.title}`);
-    }
-  }
-  
-  export class CommandManager {
-    private commandQueue: Command[];
-  
-    constructor() {
-      this.commandQueue = [];
-    }
-  
-    public addCommand(command: Command): void {
-      this.commandQueue.push(command);
-    }
-  
-    public executeCommands(): void {
-      while (this.commandQueue.length > 0) {
-        const command = this.commandQueue.shift();
-        command?.execute();
-      }
-    }
-  }
-  
+	private attacker: CardItem;
+	private defender: CardItem;
+	private attackerBoard: Board;
+	private defenderBoard: Board;
+
+	constructor(
+		attacker: CardItem,
+		defender: CardItem,
+		attackerBoard: Board,
+		defenderBoard: Board,
+	) {
+		this.attacker = attacker;
+		this.defender = defender;
+		this.attackerBoard = attackerBoard;
+		this.defenderBoard = defenderBoard;
+	}
+
+	public execute(): void {
+		this.defender.health -= this.attacker.attack;
+		this.attacker.health -= this.defender.attack;
+
+		if (this.defender.health <= 0) {
+			this.defenderBoard.removeCardItem(this.defender);
+			console.log(`${this.defender.title} a été détruit !`);
+		}
+
+		if (this.attacker.health <= 0) {
+			this.attackerBoard.removeCardItem(this.attacker);
+			console.log(`${this.attacker.title} a été détruit !`);
+		}
+
+		console.log(`${this.attacker.title} attaque ${this.defender.title}`);
+	}
+}
+
+export class CommandManager {
+	private commandQueue: Command[];
+
+	constructor() {
+		this.commandQueue = [];
+	}
+
+	public addCommand(command: Command): void {
+		this.commandQueue.push(command);
+	}
+
+	public executeCommands(): void {
+		while (this.commandQueue.length > 0) {
+			const command = this.commandQueue.shift();
+			command?.execute();
+		}
+	}
+}
