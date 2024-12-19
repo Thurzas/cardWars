@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Fond principal avec gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000033;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#000066;stop-opacity:0.7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Base shape -->
+  <path d="M20,10 
+           L380,10 
+           L390,20 
+           L390,180 
+           L380,190 
+           L20,190 
+           L10,180 
+           L10,20 Z" 
+        fill="url(#bgGradient)"/>
+  
+  <!-- Bordure luminescente -->
+  <path d="M20,10 
+           L380,10 
+           L390,20 
+           L390,180 
+           L380,190 
+           L20,190 
+           L10,180 
+           L10,20 Z" 
+        fill="none" 
+        stroke="#00fff2" 
+        stroke-width="1.5"
+        filter="drop-shadow(0 0 2px #00fff2)"/>
+  
+ 
+  
+  <!-- Lignes technologiques -->
+  <path d="M10,50 L30,50 L40,60" 
+        stroke="#00fff2" 
+        stroke-width="1" 
+        fill="none"/>
+  <path d="M10,150 L30,150 L40,140" 
+        stroke="#00fff2" 
+        stroke-width="1" 
+        fill="none"/>
+  <path d="M390,50 L370,50 L360,60" 
+        stroke="#00fff2" 
+        stroke-width="1" 
+        fill="none"/>
+  <path d="M390,150 L370,150 L360,140" 
+        stroke="#00fff2" 
+        stroke-width="1" 
+        fill="none"/>
+  
+  <!-- Points d'intersection lumineux -->
+  <circle cx="40" cy="60" r="2" fill="#00fff2" filter="drop-shadow(0 0 2px #00fff2)"/>
+  <circle cx="40" cy="140" r="2" fill="#00fff2" filter="drop-shadow(0 0 2px #00fff2)"/>
+  <circle cx="360" cy="60" r="2" fill="#00fff2" filter="drop-shadow(0 0 2px #00fff2)"/>
+  <circle cx="360" cy="140" r="2" fill="#00fff2" filter="drop-shadow(0 0 2px #00fff2)"/>
+  
+  
+  <!-- Lignes scan horizontales animées -->
+  <rect x="30" y="80" width="340" height="1" 
+        fill="#00fff2" 
+        opacity="0.3">
+    <animate attributeName="y" 
+             values="30;170;30" 
+             dur="3s" 
+             repeatCount="indefinite"/>
+  </rect>
+  
+</svg>
