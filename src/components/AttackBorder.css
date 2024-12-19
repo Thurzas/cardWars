@@ -1,0 +1,16 @@
+#AttackBorder-conteneur {
+	display: flex;
+	height: 45px;
+	width: 45px;
+	background-image: url("../assets/card-img/attack-border-red.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+
+	p {
+		margin: 0;
+		padding: 0;
+		color: #ff0000;
+	}
+}
