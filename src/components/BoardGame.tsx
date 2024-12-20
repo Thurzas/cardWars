@@ -9,11 +9,7 @@ import {
 	AttackCommand,
 	CommandManager,
 } from "../utils.tsx";
-
-interface GameBoardProps {
-	player1: Player;
-	player2: Player;
-}
+import Card from "./Card.tsx";
 
 function BoardGame(data: DeckProps) {
 	const mergedData = data.data.map((card) => {
@@ -147,29 +143,26 @@ function BoardGame(data: DeckProps) {
 				<div>
 					<h2>Player 1 Board</h2>
 					{player1Board.Cards.map((card: CardItem) => (
-						<button
-							key={card.id}
-							style={{
-								border:
-									selectedCard?.id === card.id
-										? "2px solid red"
-										: "1px solid black",
-							}}
-							onClick={() => handleCardClick(card, player1Board)}
-						>
-							{card.title} (A: {card.attack}, H: {card.health})
-						</button>
+							<button
+								style={{
+									border:
+										selectedCard?.id === card.id
+											? "2px solid red"
+											: "1px solid black",
+								}}
+								key={card.id} onClick={() => handleCardClick(card, player1Board)}>
+								<Card data={card} />
+							</button>
+
 					))}
+					
 				</div>
 
 				<div>
 					<h2>Player 2 Board</h2>
 					{player2Board.Cards.map((card: CardItem) => (
-						<button
-							key={card.id}
-							onClick={() => handleCardClick(card, player2Board)}
-						>
-							{card.title} (A: {card.attack}, H: {card.health})
+						<button key={card.id} onClick={() => handleCardClick(card, player2Board)}>
+							<Card data={card} />
 						</button>
 					))}
 				</div>
@@ -178,8 +171,9 @@ function BoardGame(data: DeckProps) {
 			<div>
 				<h2>Player 1 Hand</h2>
 				{player1Hand.Cards.map((card: CardItem) => (
+					
 					<button key={card.id} onClick={() => playCardFromHand(card)}>
-						{card.title} (A: {card.attack}, H: {card.health})
+						<Card data={card} />
 					</button>
 				))}
 			</div>

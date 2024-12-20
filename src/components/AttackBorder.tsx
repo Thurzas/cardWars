@@ -1,9 +1,10 @@
+import { AttackProps } from "../utils";
 import "./AttackBorder.css";
-function AttackBorder() {
+function AttackBorder({attack}:AttackProps) {
 	return (
 		<>
 			<div id="AttackBorder-conteneur">
-				<p>7</p>
+				<p>{attack}</p>
 			</div>
 		</>
 	);

@@ -59,7 +59,7 @@ function Home() {
 		<>
 			<h2>Hello, Home !</h2>
 			<Suspense fallback={<p>Loading data...</p>}>
-				<BoardGame data={data} assets={cardAssets} /> {/* Type garanti ici */}
+				<BoardGame data={data} assets={cardAssets} /> 
 			</Suspense>
 		</>
 	);

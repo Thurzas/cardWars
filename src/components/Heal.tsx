@@ -1,9 +1,10 @@
+import { HealthProps } from "../utils";
 import "./Heal.css";
-function Heal() {
+function Heal({health}:HealthProps) {
 	return (
 		<>
 			<div id="Heal-svg" className="heal-svg">
-				<p>5</p>
+				<p>{health}</p>
 			</div>
 		</>
 	);

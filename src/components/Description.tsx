@@ -1,10 +1,17 @@
+import { CardItem, DescriptionProps } from "../utils";
 import "./Description.css";
 
-function Description() {
+function Description({description, portrait} : DescriptionProps) {
 	return (
 		<>
 			<div id="Description-conteneur" className="description">
-				<p>l'attaque du personnage</p>
+				<div className="portrait" style={{
+					backgroundImage: `url(${portrait})`,
+					backgroundSize: "cover",
+					
+				}} >
+				</div>
+				<p>{description}</p>
 			</div>
 		</>
 	);

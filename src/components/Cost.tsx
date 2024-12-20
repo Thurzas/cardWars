@@ -1,10 +1,11 @@
+import { CostProps } from "../utils";
 import "./Cost.css";
 
-function Cost() {
+function Cost({cost}:CostProps) {
 	return (
 		<>
 			<div id="Cost-Conteneur" className="Cost">
-				<p>5</p>
+				<p>{cost}</p>
 			</div>
 		</>
 	);
