@@ -1,13 +1,13 @@
-import { CardItem, CardProps } from "../utils";
+import { CardItem, type CardProps } from "../utils";
 import BorderCard from "./BorderCard";
 
 import "./Card.css";
 
-function Card({data} : CardProps) {
+function Card({ data }: CardProps) {
 	return (
 		<>
 			<div id="card-conteneur" className="card">
-				<BorderCard data={data}/>
+				<BorderCard data={data} />
 			</div>
 		</>
 	);

@@ -1,6 +1,6 @@
-import { HealthProps } from "../utils";
+import type { HealthProps } from "../utils";
 import "./Heal.css";
-function Heal({health}:HealthProps) {
+function Heal({ health }: HealthProps) {
 	return (
 		<>
 			<div id="Heal-svg" className="heal-svg">

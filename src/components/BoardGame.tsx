@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-	DeckProps,
+	type DeckProps,
 	CardItem,
 	Board,
 	Player,
@@ -10,6 +10,7 @@ import {
 	CommandManager,
 } from "../utils.tsx";
 import Card from "./Card.tsx";
+import "./BoardGame.css";
 
 function BoardGame(data: DeckProps) {
 	const mergedData = data.data.map((card) => {
@@ -53,132 +54,135 @@ function BoardGame(data: DeckProps) {
 		};
 		initHands();
 
-        const initBoard2 = () => {
-            player2Hand.Cards.forEach((c) => {
+		const initBoard2 = () => {
+			player2Hand.Cards.forEach((c) => {
 				const card = player2Hand.drawCardItem(c);
-				if(card)
-	                player2Board.addCardItem(card);
-            });
-        };
-        initBoard2();
+				if (card) player2Board.addCardItem(card);
+			});
+		};
+		initBoard2();
 	}, [player1, player2, player1Hand]);
 
-    const playCardFromHand = (card: CardItem) => {
-        if (isPlayer1Turn) {
-
-            // Retirer la carte de la main du joueur 1
+	const playCardFromHand = (card: CardItem) => {
+		if (isPlayer1Turn) {
+			// Retirer la carte de la main du joueur 1
 			const DrawedCard = player1Hand.drawCardItem(card);
 
 			//les useStates me force à créer un nouvel objet au lieu de mettre à jour un objet courant...
-			const updatedHand = new Hand();			
-            player1Hand.Cards.forEach((c) => {
+			const updatedHand = new Hand();
+			player1Hand.Cards.forEach((c) => {
 				updatedHand.addCardItem(c);
-            });
-            setPlayer1Hand(updatedHand);
-    
-            // Ajouter la carte au plateau du joueur 1
-            const updatedBoard = new Board(player1Board.owner);
-            player1Board.Cards.forEach((c) => updatedBoard.addCardItem(c));
-            updatedBoard.addCardItem(card);
-            setPlayer1Board(updatedBoard);
-        }
-    };
-    
+			});
+			setPlayer1Hand(updatedHand);
 
-    const handleCardClick = (card: CardItem, board: Board) => {
-        if (isPlayer1Turn) {
-            if (board === player1Board) {
-                // Sélectionner une carte sur le plateau du joueur 1
-                setSelectedCard(card);
-            } else if (board === player2Board && selectedCard) {
-                // Attaquer une carte du plateau du joueur 2
-                const attackCommand = new AttackCommand(
-                    selectedCard,
-                    card,
-                    player1Board,
-                    player2Board
-                );
-                commandManager.addCommand(attackCommand);
-                commandManager.executeCommands();
-    
-                // Mettre à jour les états des plateaux après l'attaque
+			// Ajouter la carte au plateau du joueur 1
+			const updatedBoard = new Board(player1Board.owner);
+			player1Board.Cards.forEach((c) => updatedBoard.addCardItem(c));
+			updatedBoard.addCardItem(card);
+			setPlayer1Board(updatedBoard);
+		}
+	};
+
+	const handleCardClick = (card: CardItem, board: Board) => {
+		if (isPlayer1Turn) {
+			if (board === player1Board) {
+				// Sélectionner une carte sur le plateau du joueur 1
+				setSelectedCard(card);
+			} else if (board === player2Board && selectedCard) {
+				// Attaquer une carte du plateau du joueur 2
+				const attackCommand = new AttackCommand(
+					selectedCard,
+					card,
+					player1Board,
+					player2Board,
+				);
+				commandManager.addCommand(attackCommand);
+				commandManager.executeCommands();
+
+				// Mettre à jour les états des plateaux après l'attaque
 				const updateBoard1 = new Board(player1Board.owner);
-                player1Board.Cards.forEach((c) => updateBoard1.addCardItem(c));
+				player1Board.Cards.forEach((c) => updateBoard1.addCardItem(c));
 				setPlayer1Board(updateBoard1);
 
 				const updateBoard2 = new Board(player2Board.owner);
-                player2Board.Cards.forEach((c) => updateBoard2.addCardItem(c));
+				player2Board.Cards.forEach((c) => updateBoard2.addCardItem(c));
 				setPlayer2Board(updateBoard2);
-    
-                setSelectedCard(null);
-            }
-        }
-    };
-    
-    
+
+				setSelectedCard(null);
+			}
+		}
+	};
+
 	const endTurn = () => {
 		setIsPlayer1Turn(!isPlayer1Turn);
 	};
 
-
-    //idée de départ pour l'affichage 
-    //        Player2
-    //------------------------//
-    //                        //
-    //       Board  2         //
-    //                        //
-    //------------------------//PASSER TOUR ICI ?
-    //                        //
-    //       Board  1         //
-    //                        //
-    //------------------------//
-    //        Player1         
-    //nos cartes 
-    //affichage temporaire: normalement quand j'aurai fini avec la logique du dessus, y'a plus qu'a implementer les components ici
+	//idée de départ pour l'affichage
+	//        Player2
+	//------------------------//
+	//                        //
+	//       Board  2         //
+	//                        //
+	//------------------------//PASSER TOUR ICI ?
+	//                        //
+	//       Board  1         //
+	//                        //
+	//------------------------//
+	//        Player1
+	//nos cartes
+	//affichage temporaire: normalement quand j'aurai fini avec la logique du dessus, y'a plus qu'a implementer les components ici
 	return (
 		<div>
 			<h1>Game Board</h1>
 
-			<div style={{ display: "flex", flexDirection:"column-reverse", justifyContent: "space-between" }}>
-				<div>
+			<div className="board1-2">
+				<div className="board">
 					<h2>Player 1 Board</h2>
-					{player1Board.Cards.map((card: CardItem) => (
+					<div className="button-card">
+						{player1Board.Cards.map((card: CardItem) => (
 							<button
-								style={{
-									border:
-										selectedCard?.id === card.id
-											? "2px solid red"
-											: "1px solid black",
-								}}
-								key={card.id} onClick={() => handleCardClick(card, player1Board)}>
+								type="button"
+								key={card.id}
+								onClick={() => handleCardClick(card, player1Board)}
+							>
 								<Card data={card} />
 							</button>
-
-					))}
-					
+						))}
+					</div>
 				</div>
 
 				<div>
-					<h2>Player 2 Board</h2>
-					{player2Board.Cards.map((card: CardItem) => (
-						<button key={card.id} onClick={() => handleCardClick(card, player2Board)}>
-							<Card data={card} />
-						</button>
-					))}
+					<div className="board">
+						<h2>Player 2 Board</h2>
+						<div className="button-card">
+							{player2Board.Cards.map((card: CardItem) => (
+								<button
+									type="button"
+									key={card.id}
+									onClick={() => handleCardClick(card, player2Board)}
+								>
+									<Card data={card} />
+								</button>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 
 			<div>
 				<h2>Player 1 Hand</h2>
 				{player1Hand.Cards.map((card: CardItem) => (
-					
-					<button key={card.id} onClick={() => playCardFromHand(card)}>
+					<button
+						type="button"
+						key={card.id}
+						onClick={() => playCardFromHand(card)}
+					>
 						<Card data={card} />
 					</button>
 				))}
 			</div>
 
-			<button onClick={endTurn}>
+			<button type="button" onClick={endTurn}>
 				{isPlayer1Turn ? "PASSER MON TOUR" : "Tour du joueur 2..."}
 			</button>
 		</div>

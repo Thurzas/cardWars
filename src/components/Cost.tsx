@@ -1,7 +1,7 @@
-import { CostProps } from "../utils";
+import type { CostProps } from "../utils";
 import "./Cost.css";
 
-function Cost({cost}:CostProps) {
+function Cost({ cost }: CostProps) {
 	return (
 		<>
 			<div id="Cost-Conteneur" className="Cost">

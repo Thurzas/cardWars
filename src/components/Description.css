@@ -14,11 +14,9 @@
 	}
 }
 
-.portrait
-{
-	width:168px;
-	height:120px;
-	background-color:red;
+.portrait {
+	width: 168px;
+	height: 120px;
+	background-color: red;
 	position: absolute;
-	
 }
