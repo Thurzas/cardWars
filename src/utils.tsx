@@ -19,6 +19,34 @@ export interface DeckProps {
 	assets: AssetsData[];
 }
 
+export interface DescriptionProps
+{
+	description:string;
+	portrait:string;
+}
+
+export interface CostProps
+{
+	cost:number;
+}
+
+export interface AttackProps
+{
+	attack:number;
+}
+export interface HealthProps
+{
+	health:number;
+}
+export interface PortraitProps
+{
+	portrait:string;
+}
+
+export interface CardProps
+{
+	data:CardItem;
+}
 export class CardItem {
 	id: number;
 	portrait: string;

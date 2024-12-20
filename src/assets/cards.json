@@ -4,20 +4,23 @@
 		"title": "Luc Skywalker",
 		"attack": 7,
 		"health": 7,
-		"cost": 5
+		"cost": 5,
+		"side": "light"
 	},
 	{
 		"id": 4,
 		"title": "Dark Vador",
 		"attack": 9,
 		"health": 10,
-		"cost": 8
+		"cost": 8,
+		"side":"dark"
 	},
 	{
 		"id": 19,
 		"title": "Yoda",
 		"attack": 6,
 		"health": 6,
-		"cost": 10
+		"cost": 10,
+		"side": "light"
 	}
 ]
