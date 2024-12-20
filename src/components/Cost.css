@@ -1,0 +1,16 @@
+#Cost-Conteneur {
+	display: flex;
+	height: 70px;
+	width: 70px;
+	background-repeat: no-repeat;
+	background-image: url("../assets/card-img/star-border-yellow.svg");
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+
+	p {
+		padding: 0;
+		margin: 0;
+		color: yellow;
+	}
+}

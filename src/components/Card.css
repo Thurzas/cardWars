@@ -1,0 +1,33 @@
+#card-conteneur {
+	/* position: relative;
+	display: flex;
+	background-image: url("../assets/card-img/art-deco-border.svg");
+	background-repeat: no-repeat; */
+
+	.attackBorder {
+		position: absolute;
+		left: 14px;
+		bottom: 14px;
+		width: 45px;
+	}
+	.starBorder {
+		position: absolute;
+		top: -10px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 70px;
+	}
+	.healBorder {
+		position: absolute;
+		right: 14px;
+		bottom: 14px;
+		width: 45px;
+	}
+
+	.fondCard {
+		position: absolute;
+		right: 12px;
+		bottom: 54px;
+		width: 176px;
+	}
+}

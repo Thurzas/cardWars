@@ -1,0 +1,35 @@
+#BorderCard-svg {
+	width: 200px;
+	height: 300px;
+	background-image: url("../assets/card-img/art-deco-border.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	#Cost-Conteneur {
+		position: relative;
+		top: -273px;
+		left: 63px;
+	}
+
+	#AttackBorder-conteneur {
+		position: relative;
+		bottom: 99px;
+		left: 12px;
+	}
+	#Heal-svg {
+		position: relative;
+		top: -144px;
+		left: 143px;
+	}
+
+	#Description-conteneur {
+		position: relative;
+		top: 16px;
+		left: 16px;
+		p {
+			position: relative;
+			top: 37px;
+			left: 1px;
+		}
+	}
+}
