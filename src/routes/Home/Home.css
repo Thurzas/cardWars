@@ -1,0 +1,67 @@
+:root {
+	--jaune: #ffbf01ff;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#home_container {
+	height: 100vh;
+	font-family: "Starjedi", sans-serif;
+	color: var(--jaune);
+	background-image: url(/public/home-img/background.png);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	h1 {
+		font-size: 5em;
+		text-align: center;
+	}
+
+	#hero_zero {
+		display: flex;
+		justify-content: center;
+		align-items: baseline;
+
+		.vador {
+			width: 90vh;
+			height: auto;
+		}
+
+		.anakin {
+			width: auto;
+			height: 75vh;
+		}
+
+		#vador {
+			right: 1350px;
+			top: 250px;
+			position: absolute;
+		}
+		#vador_booster {
+			width: 150px;
+		}
+		#vador_booster:hover {
+			transform: scale(1.2);
+			border-radius: 0.2rem;
+		}
+
+		#anakin {
+			left: 1500px;
+			top: 500px;
+			position: absolute;
+		}
+		#anakin_booster {
+			width: 200px;
+			transform: scaleX(-1);
+		}
+
+		#anakin_booster:hover {
+			border-radius: 0.2rem;
+			transform: scale(1.2);
+		}
+	}
+}

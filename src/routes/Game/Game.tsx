@@ -43,7 +43,7 @@ function Game() {
 				targetedAsset.attack,
 				targetedAsset.health,
 				targetedAsset.cost,
-				targetedAsset.side
+				targetedAsset.side,
 			);
 	});
 	const cards = mergedData.filter((card: CardItem) => card !== undefined);

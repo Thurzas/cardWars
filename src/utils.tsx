@@ -57,7 +57,7 @@ export class CardItem {
 		attack: number,
 		health: number,
 		cost: number,
-		side:string
+		side: string,
 	) {
 		this.id = id;
 		this.portrait = portrait;
@@ -150,17 +150,23 @@ export interface Player {
 	hand: Hand;
 	deck: Deck;
 	turn: boolean;
-	Health:number;
+	Health: number;
 }
 
 export class Player implements Player {
-	constructor(id: number, name: string, hand: Hand, deck: Deck, health: number) {
+	constructor(
+		id: number,
+		name: string,
+		hand: Hand,
+		deck: Deck,
+		health: number,
+	) {
 		this.id = id;
 		this.name = name;
 		this.hand = hand;
 		this.deck = deck;
 		this.turn = false;
-		this.Health=health;
+		this.Health = health;
 	}
 }
 
@@ -181,8 +187,8 @@ export class AttackCommand implements Command {
 		defender: CardItem,
 		attackerBoard: Board,
 		defenderBoard: Board,
-		player1:CardItem,
-		player2:CardItem
+		player1: CardItem,
+		player2: CardItem,
 	) {
 		this.attacker = attacker;
 		this.defender = defender;
@@ -193,20 +199,17 @@ export class AttackCommand implements Command {
 	}
 
 	public execute(): void {
-		if(this.defender ===this.player1 || this.defender === this.player2 )
-		{
+		if (this.defender === this.player1 || this.defender === this.player2) {
 			console.log(`${this.attacker.title} attaque ${this.defender.title}`);
-			if(this.defenderBoard.Cards.length>0){
-				console.log("you can't attack this player until it got no cards on board");
-			}
-			else
-			{
+			if (this.defenderBoard.Cards.length > 0) {
+				console.log(
+					"you can't attack this player until it got no cards on board",
+				);
+			} else {
 				this.defender.health -= this.attacker.attack;
 				this.attacker.health -= this.defender.attack;
 			}
-		}
-		else
-		{
+		} else {
 			this.defender.health -= this.attacker.attack;
 			this.attacker.health -= this.defender.attack;
 		}
