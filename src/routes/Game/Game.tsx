@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from "react";
 import Card from "../../components/Card";
-import { AssetsData, CardData, CardItem, Deck } from "../../utils";
+import { type AssetsData, type CardData, CardItem, Deck } from "../../utils";
 import BoardGame from "../../components/BoardGame";
 
 const data = await fetch(
