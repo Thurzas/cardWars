@@ -1,0 +1,36 @@
+.board {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-size: cover;
+	background-image: url("../assets/sci-fi-game-board.svg");
+	h2 {
+		color: white;
+	}
+
+	button {
+		border: none;
+		background-color: transparent;
+		margin: 10px;
+		align-items: center;
+		justify-content: center;
+	}
+}
+.button-Card {
+	align-items: center;
+	justify-content: center;
+}
+
+.board1-2 {
+	gap: 30px;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+}
+
+.player
+{
+	display: flex;
+	margin: 0 auto;
+}

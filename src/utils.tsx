@@ -7,6 +7,7 @@ export interface CardData {
 	imageUrl: string;
 }
 export interface AssetsData {
+	side: any;
 	id: number;
 	title: string;
 	attack: number;
@@ -48,6 +49,7 @@ export class CardItem {
 	attack: number;
 	health: number;
 	cost: number;
+	side: string;
 	constructor(
 		id: number,
 		portrait: string,
@@ -55,6 +57,7 @@ export class CardItem {
 		attack: number,
 		health: number,
 		cost: number,
+		side: string,
 	) {
 		this.id = id;
 		this.portrait = portrait;
@@ -62,6 +65,7 @@ export class CardItem {
 		this.attack = attack;
 		this.health = health;
 		this.cost = cost;
+		this.side = side;
 	}
 }
 
@@ -146,16 +150,23 @@ export interface Player {
 	hand: Hand;
 	deck: Deck;
 	turn: boolean;
+	Health: number;
 }
 
 export class Player implements Player {
-	constructor(id: number, name: string, hand: Hand, deck: Deck) {
+	constructor(
+		id: number,
+		name: string,
+		hand: Hand,
+		deck: Deck,
+		health: number,
+	) {
 		this.id = id;
 		this.name = name;
 		this.hand = hand;
 		this.deck = deck;
 		this.turn = false;
-		this.turn = false;
+		this.Health = health;
 	}
 }
 
@@ -168,22 +179,40 @@ export class AttackCommand implements Command {
 	private defender: CardItem;
 	private attackerBoard: Board;
 	private defenderBoard: Board;
+	private player1: CardItem;
+	private player2: CardItem;
 
 	constructor(
 		attacker: CardItem,
 		defender: CardItem,
 		attackerBoard: Board,
 		defenderBoard: Board,
+		player1: CardItem,
+		player2: CardItem,
 	) {
 		this.attacker = attacker;
 		this.defender = defender;
 		this.attackerBoard = attackerBoard;
 		this.defenderBoard = defenderBoard;
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 
 	public execute(): void {
-		this.defender.health -= this.attacker.attack;
-		this.attacker.health -= this.defender.attack;
+		if (this.defender === this.player1 || this.defender === this.player2) {
+			console.log(`${this.attacker.title} attaque ${this.defender.title}`);
+			if (this.defenderBoard.Cards.length > 0) {
+				console.log(
+					"you can't attack this player until it got no cards on board",
+				);
+			} else {
+				this.defender.health -= this.attacker.attack;
+				this.attacker.health -= this.defender.attack;
+			}
+		} else {
+			this.defender.health -= this.attacker.attack;
+			this.attacker.health -= this.defender.attack;
+		}
 
 		if (this.defender.health <= 0) {
 			this.defenderBoard.removeCardItem(this.defender);
@@ -194,8 +223,6 @@ export class AttackCommand implements Command {
 			this.attackerBoard.removeCardItem(this.attacker);
 			console.log(`${this.attacker.title} a été détruit !`);
 		}
-
-		console.log(`${this.attacker.title} attaque ${this.defender.title}`);
 	}
 }
 
