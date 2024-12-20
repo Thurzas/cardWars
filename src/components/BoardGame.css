@@ -28,3 +28,9 @@
 	flex-direction: column-reverse;
 	justify-content: space-between;
 }
+
+.player
+{
+	display: flex;
+	margin: 0 auto;
+}

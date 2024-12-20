@@ -43,6 +43,7 @@ function Game() {
 				targetedAsset.attack,
 				targetedAsset.health,
 				targetedAsset.cost,
+				targetedAsset.side
 			);
 	});
 	const cards = mergedData.filter((card: CardItem) => card !== undefined);
@@ -50,7 +51,6 @@ function Game() {
 	deck.Cards = cards;
 	return (
 		<>
-			<h2>Hello, Home !</h2>
 			<Suspense fallback={<p>Loading data...</p>}>
 				<BoardGame data={data} assets={cardAssets} />
 			</Suspense>
