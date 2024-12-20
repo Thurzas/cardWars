@@ -20,7 +20,7 @@ function Home() {
 					/>
 					<img
 						id="vador_booster"
-						src="/public/home-img/booster.png"
+						src="/public/home-img/booster_vador.png"
 						alt="booster"
 					/>
 					<img

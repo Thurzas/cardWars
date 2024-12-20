@@ -1,7 +1,9 @@
+import Background from "../../components/background";
+
 function Game() {
 	return (
 		<>
-			<h2>Hello, Game !</h2>
+			<Background />
 		</>
 	);
 }
