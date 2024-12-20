@@ -1,5 +1,3 @@
-import { useState} from "react";
-function Player(){
-    
-}
+import { useState } from "react";
+function Player() {}
 export default Player;
