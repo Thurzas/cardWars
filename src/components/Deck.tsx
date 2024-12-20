@@ -26,3 +26,4 @@ function Deck(data: CardItem[]) {
 }
 
 export default Deck;
+

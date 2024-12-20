@@ -1,0 +1,15 @@
+#Description-conteneur {
+	display: flex;
+	height: 268px;
+	width: 168px;
+	background-repeat: no-repeat;
+	background-image: url("../assets/card-img/backgroudCard.svg");
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	color: white;
+
+	p {
+		text-align: center;
+	}
+}

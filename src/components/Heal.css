@@ -1,0 +1,16 @@
+#Heal-svg {
+	background-image: url(../assets/card-img/number-border-green.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	height: 45px;
+	width: 45px;
+
+	p {
+		margin: 0;
+		padding: 0;
+		color: #00ff00;
+	}
+}

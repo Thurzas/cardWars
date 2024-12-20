@@ -1,8 +1,10 @@
+import "./Cost.css";
+
 function Cost() {
 	return (
 		<>
 			<div id="Cost-Conteneur" className="Cost">
-				<p>7</p>
+				<p>5</p>
 			</div>
 		</>
 	);
