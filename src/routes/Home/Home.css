@@ -36,23 +36,29 @@
 			height: 75vh;
 		}
 
+		#vador {
+			right: 1350px;
+			top: 250px;
+			position: absolute;
+		}
 		#vador_booster {
 			width: 150px;
-			position: absolute;
-			margin-right: 1000px;
-			margin-top: 25px;
 		}
 		#vador_booster:hover {
 			transform: scale(1.2);
 			border-radius: 0.2rem;
 		}
-		#anakin_booster {
+
+		#anakin {
+			left: 1500px;
+			top: 500px;
 			position: absolute;
-			transform: scaleX(-1);
-			width: 200px;
-			margin-left: 1225px;
-			margin-top: 375px;
 		}
+		#anakin_booster {
+			width: 200px;
+			transform: scaleX(-1);
+		}
+
 		#anakin_booster:hover {
 			border-radius: 0.2rem;
 			transform: scale(1.2);

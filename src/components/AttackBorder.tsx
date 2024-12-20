@@ -1,6 +1,6 @@
-import { AttackProps } from "../utils";
+import type { AttackProps } from "../utils";
 import "./AttackBorder.css";
-function AttackBorder({attack}:AttackProps) {
+function AttackBorder({ attack }: AttackProps) {
 	return (
 		<>
 			<div id="AttackBorder-conteneur">
