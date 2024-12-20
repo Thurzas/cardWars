@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Fond du plateau -->
+  <rect width="800" height="600" fill="#1a1a2e"/>
+  
+  <!-- Grille de fond -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a4a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  
+  <!-- Effets de lueur sur les coins -->
+  <circle cx="0" cy="0" r="5" fill="#00ffff"/>
+  <circle cx="800" cy="0" r="5" fill="#00ffff"/>
+  <circle cx="0" cy="600" r="5" fill="#00ffff"/>
+  <circle cx="800" cy="600" r="5" fill="#00ffff"/>
+  
+  <!-- Lignes décoratives -->
+  <path d="M 0 20 L 780 20" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+  <path d="M 0 580 L 780 580" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Ajout de quelques lignes de circuit supplémentaires pour l'ambiance -->
+  <path d="M 20 0 L 20 40" stroke="#00ffff" stroke-width="1" opacity="0.2"/>
+  <path d="M 780 0 L 780 40" stroke="#00ffff" stroke-width="1" opacity="0.2"/>
+  <path d="M 20 560 L 20 600" stroke="#00ffff" stroke-width="1" opacity="0.2"/>
+  <path d="M 780 560 L 780 600" stroke="#00ffff" stroke-width="1" opacity="0.2"/>
+</svg>

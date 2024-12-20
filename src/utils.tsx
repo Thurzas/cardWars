@@ -19,33 +19,27 @@ export interface DeckProps {
 	assets: AssetsData[];
 }
 
-export interface DescriptionProps
-{
-	description:string;
-	portrait:string;
+export interface DescriptionProps {
+	description: string;
+	portrait: string;
 }
 
-export interface CostProps
-{
-	cost:number;
+export interface CostProps {
+	cost: number;
 }
 
-export interface AttackProps
-{
-	attack:number;
+export interface AttackProps {
+	attack: number;
 }
-export interface HealthProps
-{
-	health:number;
+export interface HealthProps {
+	health: number;
 }
-export interface PortraitProps
-{
-	portrait:string;
+export interface PortraitProps {
+	portrait: string;
 }
 
-export interface CardProps
-{
-	data:CardItem;
+export interface CardProps {
+	data: CardItem;
 }
 export class CardItem {
 	id: number;
@@ -137,14 +131,11 @@ export class Hand implements Hand {
 		}
 	}
 
-	public drawCardItem(card: CardItem)
-	{
-		if(this.Cards.includes(card))
-		{
+	public drawCardItem(card: CardItem) {
+		if (this.Cards.includes(card)) {
 			this.removeCardItem(card);
 			return card;
-		}
-		else{
+		} else {
 			return null;
 		}
 	}
