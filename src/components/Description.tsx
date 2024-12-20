@@ -12,7 +12,7 @@ function Description({ description, portrait }: DescriptionProps) {
 						backgroundSize: "cover",
 					}}
 				/>
-				<p>{description}</p>
+				<p className=".description">{description}</p>
 			</div>
 		</>
 	);

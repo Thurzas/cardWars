@@ -2,8 +2,8 @@
 	{
 		"id": 1,
 		"title": "Luc Skywalker",
-		"attack": 7,
-		"health": 7,
+		"attack": 9,
+		"health": 9,
 		"cost": 5,
 		"side": "light"
 	},
@@ -11,8 +11,8 @@
 	{
 		"id": 2,
 		"title": "C-3PO",
-		"attack": 7,
-		"health": 7,
+		"attack": 1,
+		"health": 5,
 		"cost": 5,
 		"side": "light"
 	},
@@ -20,8 +20,8 @@
 	{
 		"id": 3,
 		"title": "R2-D2",
-		"attack": 7,
-		"health": 7,
+		"attack": 1,
+		"health": 8,
 		"cost": 5,
 		"side": "light"
 	},
@@ -30,7 +30,7 @@
 		"id": 4,
 		"title": "Dark Vador",
 		"attack": 9,
-		"health": 10,
+		"health": 9,
 		"cost": 8,
 		"side": "dark"
 	},
@@ -38,7 +38,7 @@
 	{
 		"id": 5,
 		"title": "Leia Organa",
-		"attack": 7,
+		"attack": 5,
 		"health": 7,
 		"cost": 5,
 		"side": "dark"
@@ -47,8 +47,8 @@
 	{
 		"id": 6,
 		"title": "Owen Lars",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 6,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -56,8 +56,8 @@
 	{
 		"id": 7,
 		"title": "Beru Whitesun lars",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 5,
 		"cost": 5,
 		"side": "light"
 	},
@@ -65,7 +65,7 @@
 	{
 		"id": 8,
 		"title": "R5-D4",
-		"attack": 7,
+		"attack": 3,
 		"health": 7,
 		"cost": 5,
 		"side": "dark"
@@ -74,7 +74,7 @@
 	{
 		"id": 9,
 		"title": "Biggs Darklighter",
-		"attack": 7,
+		"attack": 2,
 		"health": 7,
 		"cost": 5,
 		"side": "light"
@@ -83,8 +83,8 @@
 	{
 		"id": 10,
 		"title": "Obi-Wan Kenobi",
-		"attack": 7,
-		"health": 7,
+		"attack": 8,
+		"health": 8,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -92,7 +92,7 @@
 	{
 		"id": 11,
 		"title": "Anakin Skywalker",
-		"attack": 7,
+		"attack": 8,
 		"health": 7,
 		"cost": 5,
 		"side": "light"
@@ -101,8 +101,8 @@
 	{
 		"id": 12,
 		"title": "Wilhuff Tarkin",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 2,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -110,8 +110,8 @@
 	{
 		"id": 13,
 		"title": "Chewbacca",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 9,
 		"cost": 5,
 		"side": "light"
 	},
@@ -119,8 +119,8 @@
 	{
 		"id": 14,
 		"title": "Han Solo",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 3,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -128,8 +128,8 @@
 	{
 		"id": 15,
 		"title": "Greedo",
-		"attack": 7,
-		"health": 7,
+		"attack": 2,
+		"health": 4,
 		"cost": 5,
 		"side": "light"
 	},
@@ -137,8 +137,8 @@
 	{
 		"id": 16,
 		"title": "Jabba the Hutt",
-		"attack": 7,
-		"health": 7,
+		"attack": 2,
+		"health": 8,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -146,8 +146,8 @@
 	{
 		"id": 17,
 		"title": "Wedge Antilles",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 2,
 		"cost": 5,
 		"side": "light"
 	},
@@ -155,7 +155,7 @@
 	{
 		"id": 18,
 		"title": "Jek Tono Porkins",
-		"attack": 7,
+		"attack": 4,
 		"health": 7,
 		"cost": 5,
 		"side": "dark"
@@ -164,8 +164,8 @@
 	{
 		"id": 19,
 		"title": "Yoda",
-		"attack": 6,
-		"health": 6,
+		"attack": 9,
+		"health": 9,
 		"cost": 10,
 		"side": "light"
 	},
@@ -173,8 +173,8 @@
 	{
 		"id": 20,
 		"title": "Palpatine",
-		"attack": 7,
-		"health": 7,
+		"attack": 9,
+		"health": 9,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -182,7 +182,7 @@
 	{
 		"id": 21,
 		"title": "Boba Fett",
-		"attack": 7,
+		"attack": 8,
 		"health": 7,
 		"cost": 5,
 		"side": "light"
@@ -191,8 +191,8 @@
 	{
 		"id": 22,
 		"title": "Bossk",
-		"attack": 7,
-		"health": 7,
+		"attack": 3,
+		"health": 5,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -200,8 +200,8 @@
 	{
 		"id": 23,
 		"title": "Lando Calrissian",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 3,
 		"cost": 5,
 		"side": "light"
 	},
@@ -209,8 +209,8 @@
 	{
 		"id": 24,
 		"title": "Ackbar",
-		"attack": 7,
-		"health": 7,
+		"attack": 2,
+		"health": 4,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -218,8 +218,8 @@
 	{
 		"id": 25,
 		"title": "Mon Mothma",
-		"attack": 7,
-		"health": 7,
+		"attack": 3,
+		"health": 6,
 		"cost": 5,
 		"side": "light"
 	},
@@ -228,7 +228,7 @@
 		"id": 26,
 		"title": "Wicket Systri Warrick",
 		"attack": 7,
-		"health": 7,
+		"health": 3,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -236,7 +236,7 @@
 	{
 		"id": 27,
 		"title": "Qui-Gon Jinn",
-		"attack": 7,
+		"attack": 6,
 		"health": 7,
 		"cost": 5,
 		"side": "light"
@@ -245,8 +245,8 @@
 	{
 		"id": 28,
 		"title": "Nute Gunray",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 4,
 		"cost": 5,
 		"side": "dark"
 	},
@@ -254,8 +254,8 @@
 	{
 		"id": 29,
 		"title": "Padmé Amidala",
-		"attack": 7,
-		"health": 7,
+		"attack": 4,
+		"health": 1,
 		"cost": 5,
 		"side": "light"
 	},
@@ -263,7 +263,7 @@
 	{
 		"id": 30,
 		"title": "Jar Jar Binks",
-		"attack": 7,
+		"attack": 6,
 		"health": 7,
 		"cost": 5,
 		"side": "dark"
