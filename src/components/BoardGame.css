@@ -1,4 +1,7 @@
 .board {
+	height: 340px;
+	width: clamp(40%, 66%, 1000px);
+	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -10,9 +13,11 @@
 	}
 
 	button {
+		padding-top: 40px;
 		border: none;
 		background-color: transparent;
-		margin: 10px;
+		margin-top: 70px;
+
 		align-items: center;
 		justify-content: center;
 	}
@@ -25,12 +30,44 @@
 .board1-2 {
 	gap: 30px;
 	display: flex;
+	align-items: center;
 	flex-direction: column-reverse;
 	justify-content: space-between;
 }
 
-.player
-{
+.player {
 	display: flex;
 	margin: 0 auto;
+}
+
+#background_image {
+	background-image: url("/public/home-img/background.png");
+}
+
+.player {
+	background-color: transparent;
+	border: none;
+}
+
+.buttonEnd {
+	font-style: italic;
+	font-weight: bolder;
+	position: absolute;
+	bottom: 221px;
+	left: 124px;
+	padding: 20px;
+	background-color: transparent;
+	border-color: white;
+	color: white;
+	border-radius: 65px 65px 65px 65px;
+	-webkit-border-radius: 65px 65px 65px 65px;
+	-moz-border-radius: 65px 65px 65px 65px;
+	box-shadow: 1px -2px 21px 11px #00ffff;
+	-webkit-box-shadow: 1px -2px 21px 11px #00ffff;
+	-moz-box-shadow: 1px -2px 21px 11px #00ffff;
+}
+
+.buttonMain {
+	background-color: transparent;
+	border: none;
 }

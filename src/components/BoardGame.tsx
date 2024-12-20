@@ -208,7 +208,7 @@ function BoardGame(data: DeckProps) {
 	//nos cartes
 	//affichage temporaire: normalement quand j'aurai fini avec la logique du dessus, y'a plus qu'a implementer les components ici
 	return (
-		<div>
+		<div id="background_image">
 			<div>
 				<button
 					className="player"
@@ -219,10 +219,8 @@ function BoardGame(data: DeckProps) {
 					<Card data={player2LoseCondition} />
 				</button>
 			</div>
-			<h1>Game Board</h1>
 			<div className="board1-2">
 				<div className="board">
-					<h2>Player 1 Board</h2>
 					<div className="button-card">
 						{player1Board.Cards.map((card: CardItem) => (
 							<button
@@ -236,28 +234,25 @@ function BoardGame(data: DeckProps) {
 					</div>
 				</div>
 
-				<div>
-					<div className="board">
-						<h2>Player 2 Board</h2>
-						<div className="button-card">
-							{player2Board.Cards.map((card: CardItem) => (
-								<button
-									type="button"
-									key={card.id}
-									onClick={() => handleCardClick(card, player2Board)}
-								>
-									<Card data={card} />
-								</button>
-							))}
-						</div>
+				<div className="board">
+					<div className="button-card">
+						{player2Board.Cards.map((card: CardItem) => (
+							<button
+								type="button"
+								key={card.id}
+								onClick={() => handleCardClick(card, player2Board)}
+							>
+								<Card data={card} />
+							</button>
+						))}
 					</div>
 				</div>
 			</div>
 
 			<div>
-				<h2>Player 1 Hand</h2>
 				{player1Hand.Cards.map((card: CardItem) => (
 					<button
+						className="buttonMain"
 						type="button"
 						key={card.id}
 						onClick={() => playCardFromHand(card)}
@@ -277,7 +272,7 @@ function BoardGame(data: DeckProps) {
 					<Card data={player1LoseCondition} />
 				</button>
 			</div>
-			<button type="button" onClick={endTurn}>
+			<button className="buttonEnd" type="button" onClick={endTurn}>
 				{isPlayer1Turn ? "PASSER MON TOUR" : "Tour du joueur 2..."}
 			</button>
 		</div>
