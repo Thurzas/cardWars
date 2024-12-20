@@ -44,33 +44,49 @@ function BoardGame(data: DeckProps) {
 	const [selectedCard, setSelectedCard] = useState<CardItem | null>(null);
 	const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
 	const [isGameInit, setGameInit] = useState(false);
+	const [isTurnChanged, setChangeTurn] = useState(false);
 	const commandManager = new CommandManager();
 
-	// Initialiser la main des joueurs avec 3 cartes du deck
-	useEffect(() => {
-		if(!isGameInit)
-		{
-			const initHands = () => {
-				for (let i = 0; i < 3; i++) {
-					const card1 = player1.deck.drawCardItem();
-					const card2 = player2.deck.drawCardItem();
-					if (card1) player1Hand.addCardItem(card1);
-					if (card2) player2.hand.addCardItem(card2); // Main du joueur 2 non affichée
-				}
-			};
-			initHands();
 	
-			const initBoard2 = () => {
-				player2Hand.Cards.forEach((c) => {
-					const card = player2Hand.drawCardItem(c);
-					if(card)
-						player2Board.addCardItem(card);
-				});
-			};
-			initBoard2();;
-			setGameInit(true);
+	useEffect(() => {
+		if (!isGameInit) {
+		  const initHands = () => {
+			for (let i = 0; i < 3; i++) {
+			  const card1 = player1.deck.drawCardItem();
+			  const card2 = player2.deck.drawCardItem();
+			  if (card1) player1Hand.addCardItem(card1);
+			  if (card2) player2.hand.addCardItem(card2);
+			}
+		  };
+		  initHands();
+	  
+		  const initBoard2 = () => {
+			player2Hand.Cards.forEach((c) => {
+			  const card = player2Hand.drawCardItem(c);
+			  if (card) player2Board.addCardItem(card);
+			});
+		  };
+		  initBoard2();
+	  
+		  setGameInit(true);
 		}
-	}, [isGameInit,player1, player2, player1Hand]);
+	  }, [isGameInit, player1, player2, player1Hand]);
+	  
+	  useEffect(() => {
+		if (!isPlayer1Turn) {
+		  console.log("Adverse turn...");
+		  setIsPlayer1Turn(true);
+		}
+	  }, [isPlayer1Turn]);
+	  
+	  useEffect(() => {
+		if (isTurnChanged && isPlayer1Turn) {
+		  console.log("Your turn...");
+		  const card = player1.deck.drawCardItem();
+		  if (card) player1Hand.addCardItem(card);
+		  setChangeTurn(false);
+		}
+	  }, [isTurnChanged, isPlayer1Turn, player1, player1Hand]);
 
     const playCardFromHand = (card: CardItem) => {
         if (isPlayer1Turn) {
@@ -93,7 +109,6 @@ function BoardGame(data: DeckProps) {
         }
     };
     
-
     const handleCardClick = (card: CardItem, board: Board) => {
         if (isPlayer1Turn)		//joueur 1 en train de jouer
 		{
@@ -130,6 +145,8 @@ function BoardGame(data: DeckProps) {
     
 	const endTurn = () => {
 		setIsPlayer1Turn(!isPlayer1Turn);
+		setChangeTurn(true);
+		console.log("fin de tour ? ", isPlayer1Turn);
 	};
 
 
@@ -149,8 +166,7 @@ function BoardGame(data: DeckProps) {
     //affichage temporaire: normalement quand j'aurai fini avec la logique du dessus, y'a plus qu'a implementer les components ici
 	return (
 		<div>
-			<h1>Game Board</h1>
-
+			<h1>Game Board</h1>			
 			<div className="board1-2">
 				<div className="board">
 					<h2>Player 1 Board</h2>
