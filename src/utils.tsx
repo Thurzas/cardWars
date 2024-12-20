@@ -111,8 +111,14 @@ export class Hand implements Hand {
 
 	public drawCardItem(card: CardItem)
 	{
-		this.removeCardItem(card);
-		return card;
+		if(this.Cards.includes(card))
+		{
+			this.removeCardItem(card);
+			return card;
+		}
+		else{
+			return null;
+		}
 	}
 }
 export interface Player {

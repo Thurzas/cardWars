@@ -59,7 +59,9 @@ function BoardGame(data: DeckProps) {
 
         const initBoard2 = () => {
             player2Hand.Cards.forEach((c) => {
-                player2Board.addCardItem(player2Hand.drawCardItem(c));
+				const card = player2Hand.drawCardItem(c);
+				if(card)
+	                player2Board.addCardItem(card);
             });
         };
         initBoard2();
@@ -67,12 +69,14 @@ function BoardGame(data: DeckProps) {
 
     const playCardFromHand = (card: CardItem) => {
         if (isPlayer1Turn) {
+
             // Retirer la carte de la main du joueur 1
-            const updatedHand = new Hand();
+			const DrawedCard = player1Hand.drawCardItem(card);
+
+			//les useStates me force à créer un nouvel objet au lieu de mettre à jour un objet courant...
+			const updatedHand = new Hand();			
             player1Hand.Cards.forEach((c) => {
-                if (c.id !== card.id) {
-                    updatedHand.addCardItem(c);
-                }
+				updatedHand.addCardItem(c);
             });
             setPlayer1Hand(updatedHand);
     
@@ -102,11 +106,13 @@ function BoardGame(data: DeckProps) {
                 commandManager.executeCommands();
     
                 // Mettre à jour les états des plateaux après l'attaque
-                setPlayer1Board(new Board(player1Board.owner));
-                player1Board.Cards.forEach((c) => player1Board.addCardItem(c));
-    
-                setPlayer2Board(new Board(player2Board.owner));
-                player2Board.Cards.forEach((c) => player2Board.addCardItem(c));
+				const updateBoard1 = new Board(player1Board.owner);
+                player1Board.Cards.forEach((c) => updateBoard1.addCardItem(c));
+				setPlayer1Board(updateBoard1);
+
+				const updateBoard2 = new Board(player2Board.owner);
+                player2Board.Cards.forEach((c) => updateBoard2.addCardItem(c));
+				setPlayer2Board(updateBoard2);
     
                 setSelectedCard(null);
             }
