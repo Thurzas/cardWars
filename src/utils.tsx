@@ -7,6 +7,7 @@ export interface CardData {
 	imageUrl: string;
 }
 export interface AssetsData {
+	side: any;
 	id: number;
 	title: string;
 	attack: number;
@@ -48,6 +49,7 @@ export class CardItem {
 	attack: number;
 	health: number;
 	cost: number;
+	side: string;
 	constructor(
 		id: number,
 		portrait: string,
@@ -55,6 +57,7 @@ export class CardItem {
 		attack: number,
 		health: number,
 		cost: number,
+		side:string
 	) {
 		this.id = id;
 		this.portrait = portrait;
@@ -62,6 +65,7 @@ export class CardItem {
 		this.attack = attack;
 		this.health = health;
 		this.cost = cost;
+		this.side = side;
 	}
 }
 
